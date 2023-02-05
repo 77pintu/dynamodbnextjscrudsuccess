@@ -79,5 +79,5 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const myId = context.params.memberid;
   const response = await getMemberById(+myId);
-  return { props: { memberData: response }, revalidate: 10 };
+  return { props: { memberData: response }, revalidate: 1 };
 }

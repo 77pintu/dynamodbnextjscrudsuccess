@@ -1,3 +1,4 @@
+import Link from "next/link.js";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import MemberDetails from "../component/MemberDetails.js";
@@ -5,7 +6,6 @@ import { getMembers } from "../config/memberdetails.js";
 
 export default function View({ data }) {
   const router = useRouter();
-
   const handleDelete = (id) => {
     if (confirm("Are you sure you want to delete")) {
       fetch("http://localhost:3000/api/member", {
