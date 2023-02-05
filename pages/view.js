@@ -8,7 +8,7 @@ export default function View({ data }) {
 
   const handleDelete = (id) => {
     if (confirm("Are you sure you want to delete")) {
-      fetch("https://vercel.com/77pintu/myappfirst/api/member", {
+      fetch("http://localhost:3000/api/member", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),

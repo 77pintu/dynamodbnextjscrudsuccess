@@ -11,7 +11,7 @@ function CreateMember() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const myData = { id: Math.floor(Math.random() * 10000), ...data };
-    fetch("https://vercel.com/77pintu/myappfirst/api/member", {
+    fetch("http://localhost:3000/api/member", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

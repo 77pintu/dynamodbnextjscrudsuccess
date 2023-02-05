@@ -16,7 +16,7 @@ export default function MemberUpdate({ memberData }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const myData = { id: memberData.Item.id, ...data };
-    fetch("https://vercel.com/77pintu/myappfirst/api/member", {
+    fetch("http://localhost:3000/api/member", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
