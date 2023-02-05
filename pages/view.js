@@ -4,7 +4,6 @@ import MemberDetails from "../component/MemberDetails.js";
 import { getMembers } from "../config/memberdetails.js";
 
 export default function View({ data }) {
-
   const router = useRouter();
 
   const handleDelete = (id) => {
@@ -27,7 +26,7 @@ export default function View({ data }) {
   return (
     <>
       <button
-        className="btn btn-secondary my-2 mx-3"
+        className="btn btn-secondary my-2 mx-2"
         onClick={() => router.push("/add")}
       >
         Add
