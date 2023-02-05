@@ -12,17 +12,25 @@ export default function MemberDetailsPage({ memberData }) {
     </>
   );
 }
-export async function getStaticPaths() {
-  const response = await getMembers();
-  const paths = response.Items.map((val) => {
-    return { params: { id: val.id.toString() } };
-  });
-  return {
-    paths,
-    fallback: false,
-  };
-}
-export async function getStaticProps(context) {
+// export async function getStaticPaths() {
+//   const response = await getMembers();
+//   const paths = response.Items.map((val) => {
+//     return { params: { id: val.id.toString() } };
+//   });
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }
+// export async function getStaticProps(context) {
+//   const myId = context.params.id;
+//   const response = await getMemberById(+myId);
+//   return {
+//     props: { memberData: response },
+//   };
+// }
+
+export async function getServerSideProps(context) {
   const myId = context.params.id;
   const response = await getMemberById(+myId);
   return {

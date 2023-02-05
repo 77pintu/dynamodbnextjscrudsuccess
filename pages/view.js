@@ -1,10 +1,12 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import MemberDetails from "../component/MemberDetails.js";
 import { getMembers } from "../config/memberdetails.js";
 
 export default function View({ data }) {
+
   const router = useRouter();
+
   const handleDelete = (id) => {
     if (confirm("Are you sure you want to delete")) {
       fetch("http://localhost:3000/api/member", {
@@ -45,7 +47,23 @@ export default function View({ data }) {
   );
 }
 
-export async function getStaticProps() {
+// export async function getStaticProps() {
+//   // first way
+//   // const response = await fetch("http://localhost:3000/api/member");
+//   // const data = await response.json();
+
+//   // second way
+//   const response = await getMembers();
+//   // console.log("🚀 ~ file: view.js:51 ~ getStaticProps ~ response2", response2);
+
+//   return {
+//     props: {
+//       data: response,
+//     },
+//     revalidate: 10,
+//   };
+// }
+export async function getServerSideProps() {
   // first way
   // const response = await fetch("http://localhost:3000/api/member");
   // const data = await response.json();
@@ -58,6 +76,5 @@ export async function getStaticProps() {
     props: {
       data: response,
     },
-    revalidate: 1,
   };
 }

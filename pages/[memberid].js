@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getMemberById, getMembers } from "../config/memberdetails.js";
 
@@ -74,15 +74,10 @@ export async function getStaticPaths() {
   const paths = response.Items.map((val) => {
     return { params: { memberid: val.id.toString() } };
   });
-  return {
-    paths,
-    fallback: false,
-  };
+  return { paths, fallback: "blocking" };
 }
 export async function getStaticProps(context) {
   const myId = context.params.memberid;
   const response = await getMemberById(+myId);
-  return {
-    props: { memberData: response },
-  };
+  return { props: { memberData: response }, revalidate: 10 };
 }
